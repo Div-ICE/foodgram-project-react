@@ -1,3 +1,4 @@
+import re
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -129,6 +130,9 @@ class IngredientAmount(models.Model):
             ),
         )
 
+    def __str__(self):
+        return f'{self.ingredient}, {self.amount}'
+
 
 class Favorite(models.Model):
     user = models.ForeignKey(
@@ -152,6 +156,9 @@ class Favorite(models.Model):
                                     name='unique favorite')
         ]
 
+    def __str__(self):
+        return self.recipe
+
 
 class ShoppingCart(models.Model):
     user = models.ForeignKey(
@@ -174,3 +181,6 @@ class ShoppingCart(models.Model):
             models.UniqueConstraint(fields=['user', 'recipe'],
                                     name='unique shopping cart')
         ]
+
+    def __str__(self):
+        return self.recipe
