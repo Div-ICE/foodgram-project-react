@@ -103,7 +103,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({
                 'ingredients': 'Ингредиенты должны быть уникальными!'
             })
-        if not tags:
+        if not ingredients:
             raise serializers.ValidationError({
                 'amount': 'Количество ингредиента должно быть больше нуля!'
             })
@@ -116,7 +116,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({
                 'tags': 'Тэги должны быть уникальными!'
             })
-        
+
         cooking_time = data['cooking_time']
         if int(cooking_time) <= 0:
             raise serializers.ValidationError({

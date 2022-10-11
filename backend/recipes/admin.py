@@ -4,7 +4,6 @@ from .models import (Favorite, Ingredient, IngredientAmount, Recipe,
                      ShoppingCart, Tag)
 
 
-
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug')
@@ -17,7 +16,6 @@ class IngredientAdmin(admin.ModelAdmin):
     list_filter = ('name',)
     search_fields = ('name',)
     empty_value_display = '-пусто-'
-
 
 
 class IngredientAmountInline(admin.TabularInline):
